@@ -5,5 +5,6 @@ module API
 
     mount API::List
     mount API::Play
+    mount API::Command
   end
 end

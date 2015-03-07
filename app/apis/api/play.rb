@@ -3,7 +3,11 @@ class API::Play < Grape::API
     desc 'play file'
     post do
       dir = params[:dir].presence ? params[:dir] : '/'
-      exec("omxplayer " + dir + params[:filename])
+      threads = []
+      threads << Thread.new do
+        Omx
+        exec("omxplayer " + dir + Shellwords.escape(params[:filename]))
+      end
       { :status=>1, :error=>nil, :result=>{} }
     end
   end

@@ -26,5 +26,8 @@ module WBMediaController
     config.paths.add File.join('app', 'apis'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
 
+    config.paths.add 'lib/omx.rb'
+    config.autoload_paths += Dir['lib', 'lib/omx']
+
   end
 end

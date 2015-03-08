@@ -7,6 +7,11 @@ module API
       def send_command command
         system "echo -n #{command} > #{pipe}"
       end
+      def kill_proc
+        `pgrep omxplayer`.split("¥n").each do |proc|
+          `kill #{proc}`
+        end
+      end
     end
 
     prefix 'api'

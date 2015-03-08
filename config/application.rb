@@ -28,7 +28,5 @@ module WBMediaController
 
     config.paths.add 'lib/omx.rb'
     config.autoload_paths += Dir['lib', 'lib/omx']
-
-    PIPE = '/tmp/omxpipe'
   end
 end

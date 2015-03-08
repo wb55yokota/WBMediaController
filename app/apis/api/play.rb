@@ -3,9 +3,9 @@ class API::Play < Grape::API
     desc 'play file'
     post do
       dir = params[:dir].presence ? params[:dir] : '/'
-      system "mkfifo #{PIPE}" unless File.exists?(PIPE)
+      system "mkfifo #{pipe}" unless File.exists?(pipe)
       send_command 'q'
-      system "omxplayer " + "\"" + dir + params[:filename] + "\" < #{PIPE} &"
+      system "omxplayer " + "\"" + dir + params[:filename] + "\" < #{pipe} &"
       send_command 'start'
       { :status=>1, :error=>nil, :result=>{} }
     end
